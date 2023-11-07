@@ -2,15 +2,15 @@
 
 This is the homepage of your documentation.
 
-## [Abstract](abstract.md)
+## [Abstract](docs/abstract.md)
 
 Here's some introductory text for Section 1.
 
-## [Introduction](intro.md)
+## [Introduction](docs/intro.md)
 
 And here's an introduction to Section 2.  
 
-## [Methodology](methodology.md)  
+## [Methodology](docs/methodology.md)  
 
 ## [Results](results.md)  
 
