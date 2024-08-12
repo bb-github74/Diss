@@ -1,0 +1,139 @@
+---
+title: "Proposal on Melitz Model using Agent-Based Modeling"
+author: "bbaasan"
+date: ''
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+bibliography: hm.bib
+csl: ieee.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# \textcolor{blue}{Introduction} (1 page)
+
+Agent-based modeling (ABM) is a novel computational methodology for representing the behavior of individuals in order to study social phenomena. Its use is rapidly growing in many fields. We review ABM in economics and finance and highlight how it can be used to relax conventional assumptions in standard economic models. In economics, ABM has enriched our understanding of markets, industrial organization, labor, macro, development, environmental and resource economics, as well as policy. We present a vision for how ABMs might be used in the future to build more realistic models of the economy and review some of hurdles that must be overcome to achieve this.
+
+More in-debt discussion can be found at @axtell2022agent where authors surveys the use of such computational agents in economics and finance over the past 60 years, reviewing what has been accomplished, describing current practice and looking to future prospects, while assessing potential bottlenecks to further progress. 
+
+
+# \textcolor{blue}{Melitz Model} (2-3 pages)  
+
+## 1. Parent: Exit, Entry and Firm Dynamics in long run equilibrium
+
+-	Analysis a dynamic stochastic model for a competitive industry which endogenously determines process for entry and exit and for individual firms output and employment.  
+-	Stationary^[]  equilibrium  
+-	Conditions to entry and exit:  
+-	Analysis: Firm size and Age cohorts  
+-	Effects on the parameters describing technological and market changes.  
+
+## 2. 2. Model  
+
+-	Uncertainty: productivity shocks   
+-	Entry: requires non-recoverable and sunk cost  
+-	Entry and Exit are equal.  
+-	The steady distributions for size, profits, and value   
+
+#### 2. 2. 1. Aim   
+
+-	Characteristics of the process for firm shocks, the cost of entry, and production technology determine the stationary equilibrium distributions and the entry and exit rate.   
+
+#### 2.2.2. Exit Conditions   
+
+-	a positive fixed cost is necessary for exit to take place and is equivalent to the existence of a fixed outside opportunity cost for resources (e.g. managerial ability) used by the firm.  
+-	A.3 and A.2 In equilibrium firm exit the industry whenever their state falls below a reservation level $x$  
+-	A.4 implies that the life span of a firm is almost surely finite, preventing the mass of firms from escaping to a no exit region  
+-	 
+
+#### 2.2.3. Entry conditions   
+
+-	Each period before the new shocks are realized, potential entrants may enter  
+-	A firm that exists secures a present value which normalized to zero  
+-	A firm must pay an entry cost greater than or equal to zero. After paying this cost its productivity shocks, which is drawn from an initial distribution v is revealed.  
+
+### Uncertainty   
+
+-	Firm specific productivity shock   
+-	There are no industry-wide shocks, this implies that aggregate output, employment, prices, and the frequency distribution for phi follow deterministic paths   
+-	The new entrants draw their initial shocks is also the distribution of realized values across new entrants. The distribution of these initial shocks represents the range and frequency of different possible initial conditions that the new entrants face.   
+
+## Melitz Model   
+
+### Model Implications   
+
+#### Theoretical Contribution  
+
+-	The model incorporates firm heterogeneity into the analysis of international trade, demonstrating that only the more productive firms engage in exporting while less productive firms serve the domestic market or exit.  
+-	The model shows how trade liberalization leads to intra-industry reallocations of resources from less to more productive firms, enhancing overall industry productivity.  
+
+#### Empirical Implications   
+
+-	The model provides a framework for understanding empirical patterns observed in international trade, such as why only a subset of firms exports and how trade impacts firm-level productivity.
+-	It has inspired numerous empirical studies examining the relationship between trade and productivity, firm survival, and market reallocation
+
+#### Policy Insights  
+
+-	The paper highlights the importance of considering firm-level responses to trade policy changes, suggesting that trade liberalization can lead to productivity gains by encouraging resource reallocation towards more efficient firms.  
+-	It provides a basis for policymakers to understand the potential gains from trade and the distributional effects within industries.  
+
+#### Extensions and Influence  
+
+-	Melitz's model has been extended in various directions, including incorporating factors such as firm dynamics, multi-product firms, and the role of financial constraints.  
+-	The paper has influenced a broad range of subsequent research in international trade, industrial organization, and macroeconomics.    
+
+
+#### Citations and Recognition  
+
+-	The 2003 paper is one of the most cited  in the field of international trade, reflecting its wide acceptance and influence in academic research.  
+-	It has been a foundation for further theoretical developments and empirical testing, making it a seminal work in modern trade theory.  
+
+### What is the Model?  
+
+# \textcolor{blue}{Data Relevant} (2-3 pages)  
+
+# \textcolor{blue}{ABM of Melitz model} (2-3 pages)  
+
+When constructing an agent-based model that includes various types of economic entities such as financial institutions, manufacturing firms, and service industries, it's important to carefully consider the differences between these entities and how they interact within the model. While you can treat them all as institutions, you might want to differentiate their behaviors and characteristics based on their roles and functions. Here's how you might approach this:
+
+Entity Differentiation: Instead of treating all entities as identical, consider defining distinct attributes and behaviors for each type of entity. Financial institutions might have different decision-making processes, risk profiles, and capital allocation strategies compared to manufacturing firms or service industries.
+
+Agent Attributes: Assign attributes to each type of entity that capture their unique characteristics. For financial institutions, these attributes might include capital reserves, investment strategies, and risk tolerance. For manufacturing firms, attributes could include production capacity, technology adoption, and supply chain dynamics.
+
+Decision Rules: Define decision rules that reflect the specific activities and objectives of each type of entity. Financial institutions might make decisions related to investments, lending, and risk management. Manufacturing firms could decide on production levels, technology upgrades, and supplier relationships. Service industries might focus on customer acquisition, quality of service, and pricing strategies.
+
+Interaction Rules: Model interactions between different types of entities. Financial institutions might provide loans or investments to manufacturing firms, influencing their growth and expansion. Manufacturing firms could supply products to service industries, which in turn influence customer demand.
+
+Market Dynamics: Consider how different types of entities interact in markets. Manufacturing firms might buy raw materials from suppliers, while financial institutions might offer credit to support these transactions. Service industries could provide services to both manufacturing firms and financial institutions.
+
+Data and Parameters: Gather relevant data and parameters that reflect the behavior of each type of entity. This could include historical financial data for financial institutions, production and cost data for manufacturing firms, and customer data for service industries.
+
+Sensitivity Analysis: Perform sensitivity analyses to explore how changes in parameters or interactions affect the overall system. This can help you understand the robustness of your model and identify key drivers of outcomes.
+
+By differentiating these entities and considering their unique attributes and behaviors, you can create a more realistic and nuanced agent-based model that captures the complexities of interactions within a diverse economic system. This approach allows you to explore how different types of entities contribute to overall market dynamics, economic growth, and the impact of various policies or shocks.
+
+
+### Pareto Distribution  
+
+Pareto distribution is considered as two-parameter family distributions[@lehoczky20013787] where $\alpha$ and $c$. And probability distribution function (PDF) is given by 
+$$
+f(x) = 
+$$
+
+#### Shock process  
+
+
+#### Profit  
+
+
+#### Stationary Distribution  
+
+
+# \textcolor{blue}{Timeline} (1 page)  
+
+# \textcolor{blue}{Reference}  
+
+
