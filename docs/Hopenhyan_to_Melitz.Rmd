@@ -95,6 +95,11 @@ More in-debt discussion can be found at @axtell2022agent where authors surveys t
 
 # \textcolor{blue}{Data Relevant} (2-3 pages)  
 
+## Business Dynamics Statistics 
+- Coarse Dataset [data](https://www.census.gov/programs-surveys/bds/data.Datasets.html#list-tab-1518962401)
+- Codebook and Glossary [2021 Release](https://www.census.gov/content/dam/Census/programs-surveys/business-dynamics-statistics/codebook-glossary.pdf)
+- Goods Traders [data](https://www.census.gov/programs-surveys/ces/data/public-use-data/experimental-bds/bds-goods-traders/data.html)
+
 # \textcolor{blue}{ABM of Melitz model} (2-3 pages)  
 
 When constructing an agent-based model that includes various types of economic entities such as financial institutions, manufacturing firms, and service industries, it's important to carefully consider the differences between these entities and how they interact within the model. While you can treat them all as institutions, you might want to differentiate their behaviors and characteristics based on their roles and functions. Here's how you might approach this:
