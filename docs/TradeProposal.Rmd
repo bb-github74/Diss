@@ -1,0 +1,202 @@
+---
+title: "Proposal Agent Based Modeling in International trade"
+author: "bbaasan"
+date: "2024-09-11"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Research Question:
+How can agent-based modeling simulate international trade and reveal future trade flow patterns based on firm behavior and market dynamics?
+
+
+# Problem:   
+
+Balestreri and Rutherford describe difficulties in solving the Melitz model primarily due to two key issues: high dimensionality and non-convexities. These arise from the inherent complexity of the model, particularly when it is extended to multi-sector or multi-country settings, or when firm heterogeneity is introduced. Here's a breakdown of these challenges:
+
+1. **High Dimensionality**:
+High dimensionality refers to the large number of variables and equations that need to be solved in the model, which increases computational complexity. In the context of the Melitz model, the sources of high dimensionality include:  
+
+- Firm Heterogeneity: In the Melitz model, firms have different productivity levels drawn from a distribution. When this is extended to multi-sector or multi-country settings, the number of firms, productivity levels, and their interactions grow exponentially. For each sector or country, firms have to make decisions about entry, exit, and exporting, leading to a large number of variables that must be simultaneously solved.
+
+- Multiple Sectors and Countries: When modeling multiple sectors (as Balestreri and Rutherford often do) or multiple countries, each sector or country introduces additional dimensions to the problem. Each sector or country has its own set of firms, productivity distributions, and trade flows, and they all interact through trade. The more sectors and countries involved, the higher the dimensionality of the system, making it more difficult to solve.  
+- Firm Decisions Across Markets: Firms have to make decisions about whether to produce domestically, export, or exit the market entirely. Each decision point adds another dimension to the problem. For example, if there are $N$, and each firm can export to $M$ countries, then the model needs to account for $N \times M$ potential decisions, vastly increasing the number of dimensions.
+
+2. **Non-Convexities**:  
+Non-convexities refer to parts of the model where the relationships between variables are not smooth or linear, making optimization and solution techniques much more difficult. Non-convex problems have multiple local optima, making it harder to find the global optimum. In the Melitz model, non-convexities arise from several sources:  
+
+- Fixed Costs of Entry and Exporting: Firms must pay a fixed cost to enter the domestic market and another fixed cost to export. These fixed costs create discrete decision points, where firms either choose to enter/export or not, based on whether their expected profits exceed the fixed costs. This creates discontinuities in the firm's decision function, as small changes in productivity or costs can lead to sudden jumps between entering and exiting.  
+
+- Threshold Effects: The model introduces threshold productivity levels for exporting and for domestic market participation. Firms with productivity above a certain threshold will export, while those below the threshold will not. These thresholds create non-linearities and kinks in the model, which are difficult to handle using traditional solution techniques. Finding these thresholds requires solving non-linear equations, and the thresholds can shift depending on trade costs and market conditions, adding complexity.  
+
+- Economies of Scale: The Melitz model incorporates economies of scale, where more productive firms have lower average costs and are better able to enter export markets. This feature creates non-convexities in the cost structure of firms, as small differences in productivity can lead to large differences in profitability, making the firm entry/exit decision highly non-linear.
+
+## Mathematical Structure:  
+1. Firms’ Problem: Firms maximize profits by producing where marginal revenue = marginal cost. The model uses CES (Constant Elasticity of Substitution) preferences, which leads to the firm’s revenue depending on its productivity, prices, and market demand.  
+2. Firm Productivity: Firm productivity is drawn from a distribution, typically Pareto or lognormal. Firms that draw a high productivity level can cover both domestic and export costs, while less productive firms may only serve the domestic market or exit.  
+3. Threshold Productivity: There is a cutoff level of productivity, $\phi'$, that separates firms that can export from those that cannot. Firms with productivity above $\phi'$ will export, while those below will only serve the domestic market or exit.  
+4. Welfare and Aggregate Productivity: Trade increases aggregate productivity as less productive firms exit and more productive firms dominate both domestic and foreign markets. Consumers benefit from a wider variety of goods at lower prices, increasing welfare.
+
+## Steps in the Single-Sector Model:
+Step 1: Firm Entry: Firms pay a fixed entry cost to discover their productivity. The productivity level is drawn from a known distribution.  
+Step 2: Firm Decisions: Based on their productivity, firms decide:  
+- To produce or not (exit if not profitable).  
+- To serve the domestic market or both domestic and export markets (depending on whether they can cover fixed export costs).  
+Step 3: Export Decision: Only firms with productivity above $\phi'$ export. The decision to export is determined by whether the additional profit from exporting outweighs the fixed export cost.  
+
+Step 4: Market Outcomes:
+- Aggregate productivity increases as less productive firms exit.  
+- Consumers benefit from a wider variety of goods at lower prices.  
+- Trade impacts both firm and consumer welfare.  
+
+Step 5: Iterative Solution: The solution to this model is computed iteratively:  
+- The model calculates the productivity cutoff for exporting.  
+- Firms' decisions are updated based on this cutoff, and the model iterates until convergence (i.e., until no further changes in decisions or cutoffs occur).  
+
+## Implications of Using a Single-Sector Model:  
+- Less complexity: The single-sector focus avoids the need to model interactions between different industries.
+Iterative method: By using a divide-and-conquer strategy, the model is solved iteratively, ensuring that the complexities of high dimensionality and non-convexities are addressed step by step.  
+- Trade effects: Even though simplified, the model still captures the core trade dynamics—more productive firms export, less productive firms either serve the domestic market or exit, and trade leads to welfare gains through productivity selection.
+
+# Model 1
+## Key Features of Agent-Based Modeling for the Melitz Model:
+
+1. Heterogeneous Firms:  
+- In ABM, each firm is an agent with its own specific productivity, costs, and export decisions. Rather than relying on distributions and solving for aggregate outcomes, you simulate the behavior of each firm individually.  
+- Firms can have unique characteristics, which makes the model more realistic in terms of how firms respond to trade costs and market conditions.  
+
+2. Entry, Exit, and Export Decisions:  
+- Each firm can decide whether to enter the market, exit, or export based on its individual productivity and costs. These decisions are made in response to market signals, such as prices, demand, and trade costs.
+You can simulate how firms’ decisions evolve over time, allowing for dynamic entry and exit in response to changing market conditions.  
+
+3. Interactions and Emergent Behavior:  
+- In ABM, firms interact with the market environment (consumers, trade costs, prices) and with each other. The collective behavior of firms can lead to emergent market dynamics, such as shifts in aggregate productivity or trade flows, without needing to explicitly solve complex equilibrium equations.  
+- Market outcomes emerge from the interactions of many firms, providing insights into how individual decisions aggregate into macroeconomic outcomes.  
+
+4. Nonlinearities and Non-Convexities:
+- ABM naturally handles nonlinearities and non-convexities, such as fixed costs of exporting and market entry thresholds. These features are difficult to handle analytically, but ABM allows for them to emerge through firm decisions without requiring smooth approximations.
+- Firms can face different thresholds for entry and export based on their individual characteristics, allowing for more nuanced decision-making.
+
+## Steps to Implement an Agent-Based Model for the Melitz Framework:  
+
+1. Define the Agents (Firms):  
+- Each firm has a productivity level drawn from a distribution (e.g., Pareto or lognormal).  
+- Firms have costs: fixed entry costs (to enter the market), fixed export costs, and variable costs (e.g., trade costs).  
+- Firms make decisions based on their productivity: whether to serve the domestic market, export, or exit.  
+
+2. Set Up Firm Decision Rules:  
+- For each firm, define decision rules for entry, exit, and exporting. For example:  
+  - Enter if expected profits from serving the domestic or export market are positive.  
+  - Export if the firm’s productivity exceeds a threshold that allows them to cover fixed export costs.  
+  - Exit if the firm cannot cover fixed costs in either the domestic or export market. These rules can evolve dynamically as market conditions change.   
+
+3. Simulate Firm Interactions:   
+- Firms interact with the market by setting prices, producing output, and selling goods.  
+- Prices and demand can be determined based on the behavior of all firms, creating feedback loops.  
+- The market-clearing condition is achieved through the interaction of supply (firms' output) and demand (consumer preferences), but this is done organically through agent interactions, rather than through solving aggregate equilibrium equations.  
+
+4. Model the Aggregate Market:  
+- As firms make their decisions, you can observe how aggregate outcomes such as total production, trade flows, and market prices emerge.
+- These outcomes are not explicitly solved for but are instead the result of firms’ individual decisions and interactions.  
+
+5. Dynamic Adjustments:  
+- In an ABM, firms adjust their behavior over time in response to market signals. For example, if prices fall, less productive firms may exit the market, leading to a shift in aggregate productivity. Over time, this leads to dynamic selection where only the most productive firms remain, similar to the results of the original Melitz model, but this emerges organically from agent interactions.
+
+## Advantages of Agent-Based Modeling:  
+
+1. Realistic Firm Heterogeneity:  
+- Unlike traditional models that assume homogeneity or smooth approximations, ABM can capture the full range of firm heterogeneity. Each firm acts based on its own productivity and cost structure.
+
+2. Non-Equilibrium Dynamics:  
+- ABM does not require the market to be in equilibrium at all times. Firms can enter or exit based on their own local conditions, leading to market outcomes that evolve over time and may not immediately converge to equilibrium.
+
+3. Emergent Market Outcomes:  
+- The model generates emergent behavior, where aggregate outcomes (e.g., trade flows, market prices) arise from the interactions of individual firms, rather than being solved directly.
+
+4. Flexible Model Structure:
+ABM allows for flexible model design. You can easily introduce additional layers of complexity, such as different sectors, innovation, or firm-level shocks, without needing to change the underlying structure of the model.
+5. Dynamic Entry and Exit:
+- Unlike static models, ABM can capture dynamic entry and exit, where firms respond to evolving market conditions. This can provide insights into how trade policies or economic shocks affect firm survival over time.
+
+## Implementation Tools for ABM:  
+NetLogo: A platform for building agent-based models with a simple interface for defining agents, interactions, and market dynamics.
+
+
+## Conclusion:
+By applying agent-based modeling to the Melitz model, you can simulate the behavior of heterogeneous firms in a trade environment without needing to solve complex equilibrium equations. Instead, the collective behavior of firms will produce aggregate outcomes, such as productivity selection and trade flows. This approach can also handle nonlinearities, firm-specific shocks, and dynamic adjustments in a way that is more flexible than traditional models.
+
+
+# Model 2. Armington-Kruger-Melitz model   
+
+## Key Concepts in the Armington-Kruger-Melitz Extension:  
+
+1. Armington Model:  
+- In the Armington model, goods are differentiated by the country of origin, and consumers have a preference for domestically produced goods versus imported goods. Each country produces a unique variety of a good, which means goods from different countries are imperfect substitutes.  
+
+2. Krugman Model:  
+- The Krugman model focuses on monopolistic competition with intra-industry trade, where firms produce differentiated goods and have market power due to product differentiation.   
+- Firms face economies of scale, which leads to larger, more productive firms being able to export, while smaller firms serve only domestic markets.  
+
+3. Melitz Model:  
+- The Melitz model introduces firm heterogeneity and selection into exporting. Only the most productive firms can cover the fixed costs of exporting, while less productive firms exit or serve only the domestic market.
+
+Step 1: Combine Armington and Krugman Models
+
+1. Country Differentiation (Armington):  
+- Consumers in each country demand varieties of goods from both domestic and foreign firms, but goods are imperfect substitutes depending on their country of origin. This creates a demand function where consumers have a preference for both domestic and imported varieties.  
+- The demand structure follows CES preferences for differentiated goods, where imports and domestic goods are weighted by their relative prices and import elasticity.  
+
+2. Intra-Industry Trade (Krugman):  
+- Firms produce differentiated goods and compete in a monopolistically competitive market. Consumers in each country demand varieties from different firms, both domestic and foreign, which leads to intra-industry trade.
+In the presence of trade costs (both fixed and variable), only some firms will find it profitable to export their differentiated product to other countries, while others will serve only their domestic market.
+
+Step 2: Introduce Heterogeneous Firms (Melitz)  
+1. Firm Heterogeneity:  
+- Firms draw productivity $\phi$ from a distribution, as in the Melitz model. Firms with higher productivity can produce more output using the same amount of labor and can cover both the fixed cost of exporting and the variable trade costs.  
+- Less productive firms can only serve the domestic market, while more productive firms enter export markets.
+
+2. Trade Costs:  
+- Firms face both variable trade costs (e.g., tariffs, transportation costs) and fixed costs of entering export markets. The fixed cost creates a threshold productivity $\phi'$, above which firms will export.
+- Firms with productivity below $\phi'$ will exit the export market or focus solely on the domestic market.  
+
+3. Entry and Exit Dynamics:  
+- Firms decide whether to enter or exit the market based on their ability to cover both sunk costs and fixed costs of operation. Firms that can cover the fixed costs of exporting and are productive enough will enter foreign markets.
+
+Step 3: Extension to Multiple Countries (Armington)
+1. Country-Specific Preferences:  
+- Extend the model to include multiple countries, each with their own preferences for domestic and foreign varieties. Consumers in country A have a preference for goods produced in country A but also demand imports from countries B, C, etc.  
+- The elasticity of substitution between domestic and imported goods determines how sensitive consumers are to changes in the relative price of foreign goods.  
+
+2. International Trade Flows:  
+- Incorporate trade between multiple countries, where firms from each country decide whether to enter foreign markets based on their productivity and the fixed and variable trade costs they face in each export market.
+
+3. Equilibrium Conditions:  
+- The model must solve for equilibrium prices and quantities that clear both domestic and international markets. Prices will depend on firm productivity, trade costs, and consumer preferences.  
+- You can solve the equilibrium using numerical methods, where trade flows between countries emerge from firms’ export decisions and consumers' preferences for foreign versus domestic varieties.  
+
+Step 4: Numerical Simulation  
+
+1. Agent-Based Modeling for Firms:  
+- You can use agent-based modeling (ABM) to simulate firm behavior, where each firm decides whether to enter domestic and foreign markets based on its productivity, fixed costs, and expected profits.  
+- Firms interact with domestic and international markets, setting prices and quantities based on market conditions, and the aggregate outcomes (trade flows, prices, firm survival) emerge from these interactions.
+
+2. General Equilibrium Framework:  
+- To capture the macroeconomic effects of trade and firm heterogeneity, the model can be embedded in a general equilibrium framework where labor markets, goods markets, and trade flows all adjust to clear in each country.
+Use numerical solvers to compute the equilibrium prices, wages, and quantities for each country, ensuring that total supply equals total demand in both domestic and international markets.  
+
+3. Dynamic Adjustments:  
+- Over time, firms adjust to changes in trade costs, productivity shocks, or demand shifts, leading to dynamic entry and exit in both domestic and export markets. The equilibrium evolves as firms respond to changing conditions.  
+
+Step 5: Further Extensions  
+
+1. Policy Shocks:  
+- You can introduce trade policies, such as tariffs or subsidies, and analyze their impact on firm entry, export decisions, and consumer welfare in each country.  
+
+2. Endogenous Sunk Costs:  
+- Sunk costs can be made endogenous, where firms invest in reducing their entry costs (e.g., through innovation or marketing), creating additional firm heterogeneity based on sunk cost efficiency.  
+
+Conclusion:
+The Armington-Kruger-Melitz extension is a powerful way to integrate firm heterogeneity and intra-industry trade with country-specific preferences for imported goods. By combining these models, you can simulate how heterogeneous firms decide to enter or exit domestic and foreign markets based on productivity, labor costs, and trade barriers.
